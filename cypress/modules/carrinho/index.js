@@ -17,7 +17,7 @@ class Carrinho {
     verificarProdutoNoCarrinho() {
         this.navegarParaCarrinho();
         cy.get('#cart_info_table').should('be.visible');
-        cy.get('.cart_description').should('contain', 'Blue Top');
+        cy.get('.cart_description').should('contain', 'Blue Top'); // Example product
     }
 
     removerProdutoDoCarrinho() {
