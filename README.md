@@ -1,4 +1,6 @@
-Base URL para testes: https://www.automationexercise.com/
+Base URL para testes: 
+* https://www.automationexercise.com/
+* https://devfinance-agilizei.netlify.app/#
 
 Mindmap para estudos: https://whimsical.com/cypress-essencial-XpeRr4NebcFJkC2Lpwm4W4
 
