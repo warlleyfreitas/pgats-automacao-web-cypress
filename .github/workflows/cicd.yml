@@ -1,10 +1,6 @@
 name: Web E2E Tests - Cypress 
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
     workflow_dispatch:
 
 jobs:
@@ -34,9 +30,12 @@ jobs:
               run: npx cypress run
 
             - name: Upload test reports
-              if: always()
               uses: actions/upload-artifact@v4
+              if: ${{ !cancelled() }}
               with:
                   name: cypress-reports
-                  path: cypress/reports
+                  path: 
+                      cypress/reports
+                      cypress/screenshots
+                      cypress/videos
                   if-no-files-found: ignore
