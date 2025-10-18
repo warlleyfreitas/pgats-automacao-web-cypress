@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://www.automationexercise.com/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is for automation practice">
+	<meta name="robots" content="index">
+	<meta name="keywords" content="Automation Exercise / Automation Practice / Practice website for automation / demo website for practice / dummy website for testing / testing website / dummy website for practice automation / API Testing / API automation">
+	<meta name="google-site-verification" content="VS1KtEV7m0Pp9MRMwCpyR7rGwUVYH6N8l1zoVepsGWs">
+	
+    <title>Automation Exercise - Signup / Login</title>
+
+	
+
+    <link href="./Automation Exercise - Signup _ Login_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Automation Exercise - Signup _ Login_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Automation Exercise - Signup _ Login_files/prettyPhoto.css" rel="stylesheet">
+    <link href="./Automation Exercise - Signup _ Login_files/animate.css" rel="stylesheet">
+	<link href="./Automation Exercise - Signup _ Login_files/main.css" rel="stylesheet">
+	<link href="./Automation Exercise - Signup _ Login_files/responsive.css" rel="stylesheet">
+	<link rel="stylesheet" href="./Automation Exercise - Signup _ Login_files/icon">
+    <!--[if lt IE 9]>
+    <script src="/static/js/html5.js"></script>
+    <script src="/static/js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="https://www.automationexercise.com/static/images/home/short_logo.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://www.automationexercise.com/static/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.automationexercise.com/static/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.automationexercise.com/static/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="https://www.automationexercise.com/static/images/ico/apple-touch-icon-57-precomposed.png">
+
+	<script src="./Automation Exercise - Signup _ Login_files/f.txt"></script><script async="" src="./Automation Exercise - Signup _ Login_files/f(1).txt" crossorigin="anonymous" data-checked-head="true"></script>
+
+<meta http-equiv="origin-trial" content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta http-equiv="origin-trial" content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><style>.vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}</style><style>.vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}</style><link type="text/css" rel="stylesheet" href="./Automation Exercise - Signup _ Login_files/css2"><link type="text/css" rel="stylesheet" href="./Automation Exercise - Signup _ Login_files/css2"><script async="" src="./Automation Exercise - Signup _ Login_files/ca-pub-1677597403311019"></script><script async="" src="./Automation Exercise - Signup _ Login_files/AGSKWxUJBHKTLHN3DgJpemJ7wwUzbFm9h6BOHpJLzvRw-YNCI9_nE_r54aYlB9xxM8N2cIRaUlA3G99BD2fAniJoIyWLgyRbk-0E6dNGR7nJPCHNkueOQFykq1hO7EJyqtsgrOKKpeJNoQ=="></script><script async="" src="./Automation Exercise - Signup _ Login_files/AGSKWxUtP_HALqv7u8Ab0a6hf_iorH8Q6Ay21ygdPGvIjL1Mq1GCD_e0bQbVprBiPwC3AkenejIu7X6a9zniN8UQELTcHAnTXqdNLSQ33n2IByfXD31LgUrO_XiJzR0R6XY_9hNq-w3s0w=="></script><script async="" src="./Automation Exercise - Signup _ Login_files/AGSKWxUQs_kut1uEUXS2DDtp598zbwGueexRhTpbuiywJzlj81uXO2wcZqt-7JTAkhvW4JqM4dIl7l_oGyGwe-QOCmYhpt4NKjnGb0XUJTEWEOS5G8lfZOe5jNBybcZqJgvK7AbP7Eo9Vw=="></script></head>
+
+<body style="">
+
+	<header id="header">
+		<div class="header-middle">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="https://www.automationexercise.com/"><img src="./Automation Exercise - Signup _ Login_files/logo.png" alt="Website for automation practice"></a>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+								<li><a href="https://www.automationexercise.com/"><i class="fa fa-home"></i> Home</a></li>
+								<li><a href="https://www.automationexercise.com/products"><i class="material-icons card_travel" style="font-size: 16px;"></i> Products</a></li>
+								<li><a href="https://www.automationexercise.com/view_cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="https://www.automationexercise.com/login" style="color: orange;"><i class="fa fa-lock"></i> Signup / Login</a></li>
+								<li><a href="https://www.automationexercise.com/test_cases"><i class="fa fa-list"></i> Test Cases</a></li>
+								<li><a href="https://www.automationexercise.com/api_list"><i class="fa fa-list"></i> API Testing</a></li>
+								<li><a href="https://www.youtube.com/c/AutomationExercise"><i class="fa fa-youtube-play"></i> Video Tutorials</a></li>
+								<li><a href="https://www.automationexercise.com/contact_us"><i class="fa fa-envelope"></i> Contact us</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<section id="form" style="margin-top: 100px !important;">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form"><!--login form-->
+						<h2>Login to your account</h2>
+						<form action="https://www.automationexercise.com/login" method="POST">
+							<input type="hidden" name="csrfmiddlewaretoken" value="QwmmqM7g24Ahcswr2T814H36C6veNKrMwmgf1tRu3RC6l64NSSbDXmW3xyQFSwuP">
+							<input type="email" data-qa="login-email" placeholder="Email Address" name="email" value="" required="">
+							<input type="password" data-qa="login-password" placeholder="Password" name="password" value="" required="">
+							
+							<button type="submit" data-qa="login-button" class="btn btn-default">Login</button>
+						</form>
+					</div><!--/login form-->
+				</div>
+				<div class="col-sm-1">
+					<h2 class="or">OR</h2>
+				</div>
+				<div class="col-sm-4">
+					<div class="signup-form"><!--sign up form-->
+						<h2>New User Signup!</h2>
+						<form action="https://www.automationexercise.com/signup" method="POST">
+							<input type="hidden" name="csrfmiddlewaretoken" value="QwmmqM7g24Ahcswr2T814H36C6veNKrMwmgf1tRu3RC6l64NSSbDXmW3xyQFSwuP">
+							<input type="text" data-qa="signup-name" placeholder="Name" name="name" value="" required="">
+							<input type="email" data-qa="signup-email" placeholder="Email Address" name="email" value="" required="">
+							<input type="hidden" name="form_type" value="signup">
+							
+							<button type="submit" data-qa="signup-button" class="btn btn-default">Signup</button>
+						</form>
+					</div><!--/sign up form-->
+				</div>
+			</div>
+		</div>
+	</section><!--/form-->
+	
+	
+	<footer id="footer">
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="form-row">
+						<div class="col-md-9 hide form-group" id="success-subscribe">
+							<div class="alert-success alert">You have been successfully subscribed!</div>
+						</div>
+					</div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>Subscription</h2>
+							<form class="searchform" method="POST">
+								<input type="hidden" name="csrfmiddlewaretoken" value="QwmmqM7g24Ahcswr2T814H36C6veNKrMwmgf1tRu3RC6l64NSSbDXmW3xyQFSwuP">
+								<input type="email" id="susbscribe_email" required="" placeholder="Your email address">
+								<button type="submit" id="subscribe" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br>our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2021 All rights reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+  
+    <script src="./Automation Exercise - Signup _ Login_files/jquery.js"></script>
+    <script src="./Automation Exercise - Signup _ Login_files/jquery.scrollUp.min.js"></script>
+	<script src="./Automation Exercise - Signup _ Login_files/bootstrap.min.js"></script>
+    <script src="./Automation Exercise - Signup _ Login_files/jquery.prettyPhoto.js"></script>
+    <script src="./Automation Exercise - Signup _ Login_files/main.js"></script>
+	<script src="./Automation Exercise - Signup _ Login_files/subscription.js"></script>
+
+<a id="scrollUp" href="https://www.automationexercise.com/login#top" style="display: none; position: fixed; z-index: 2147483647;"><i class="fa fa-angle-up"></i></a><ins class="adsbygoogle adsbygoogle-noablate" data-adsbygoogle-status="done" style="display: none !important;" data-ad-status="unfilled"><div id="aswift_0_host" style="border: none; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe id="aswift_0" name="aswift_0" browsingtopics="true" style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="./Automation Exercise - Signup _ Login_files/ads.html" data-google-container-id="a!1" tabindex="0" title="Advertisement" aria-label="Advertisement" data-load-complete="true"></iframe></div></ins><div id="f9a7uhrpgp" style="display: block;"><template shadowrootmode="closed"><div id="g5k2x9cunq"><style type="text/css">
+  @import 'chrome-extension://gidejehfgombmkfflghejpncblgfkagj/app.css';
+</style>
+<div id="cuponomia" data-v-app=""><div></div></div>
+</div></template></div><iframe name="googlefcPresent" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;" src="./Automation Exercise - Signup _ Login_files/saved_resource.html"></iframe><iframe src="./Automation Exercise - Signup _ Login_files/aframe.html" width="0" height="0" style="display: none;"></iframe><iframe name="__tcfapiLocator" src="./Automation Exercise - Signup _ Login_files/saved_resource(1).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcInactive" src="./Automation Exercise - Signup _ Login_files/saved_resource(2).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe><iframe name="googlefcLoaded" src="./Automation Exercise - Signup _ Login_files/saved_resource(3).html" style="display: none; width: 0px; height: 0px; border: none; z-index: -1000; left: -1000px; top: -1000px;"></iframe></body><iframe id="google_esf" name="google_esf" src="./Automation Exercise - Signup _ Login_files/zrt_lookup_fy2021.html" style="display: none;"></iframe></html>
