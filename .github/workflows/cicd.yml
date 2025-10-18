@@ -29,11 +29,11 @@ jobs:
             - name: Running tests
               run: npx cypress run
 
-            - name: Upload test reports
+            - name: Test reports
               uses: actions/upload-artifact@v4
               if: ${{ !cancelled() }}
               with:
-                  name: cypress-reports
+                  name: Execution report
                   path: |
                       cypress/reports
                       cypress/screenshots
