@@ -34,8 +34,7 @@ jobs:
               if: ${{ !cancelled() }}
               with:
                   name: cypress-reports
-                  path: 
+                  path: |
                       cypress/reports
                       cypress/screenshots
                       cypress/videos
-                  if-no-files-found: ignore
