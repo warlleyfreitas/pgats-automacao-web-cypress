@@ -1,0 +1,36 @@
+{
+    "auth": {
+        "username": "warlleyvinicius_NuMkxF",
+        "access_key": "GjtwisoqUqMd3B5pBViV"
+    },
+    "browsers": [
+        {
+            "browser": "chrome",
+            "os": "Windows 10",
+            "versions": ["latest"]
+        }
+    ],
+    "run_settings": {
+        "cypress_config_file": "./cypress.config.js",
+        "cypress_version": "13.7",
+        "project_name": "pgats-automacao-web",
+        "build_name": "build-name",
+        "exclude": [],
+        "parallels": 1,
+        "npm_dependencies": {
+            "@faker-js/faker": "^9.9.0",
+            "cypress-mochawesome-reporter": "^3.8.4"
+        },
+        "auto_import_dev_dependencies": false,
+        "exclude_dependencies": [],
+        "package_config_options": {},
+        "headless": true
+    },
+    "connection_settings": {
+        "local": false,
+        "local_identifier": null,
+        "local_mode": null,
+        "local_config_file": null
+    },
+    "disable_usage_reporting": false
+}
