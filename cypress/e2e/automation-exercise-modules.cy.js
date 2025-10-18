@@ -106,12 +106,12 @@ describe('Automation Exercise - E2E Tests with Modules', () => {
             carrinho.adicionarProdutoAoCarrinho();
         });
 
-        it.skip('Should verify product in cart', () => {
+        it('Should verify product in cart', () => {
             carrinho.adicionarProdutoAoCarrinho();
             carrinho.verificarProdutoNoCarrinho();
         });
 
-        it.skip('Should remove product from cart', () => {
+        it('Should remove product from cart', () => {
             carrinho.adicionarProdutoAoCarrinho();
             carrinho.verificarProdutoNoCarrinho();
             carrinho.removerProdutoDoCarrinho();

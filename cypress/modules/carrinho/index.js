@@ -1,6 +1,6 @@
 class Carrinho {
     navegarParaCarrinho() {
-        cy.get('a[href="/view_cart"]').click();
+        cy.get('a[href="/view_cart"]').first().click();
     }
 
     navegarParaProdutos() {
@@ -8,7 +8,7 @@ class Carrinho {
     }
 
     adicionarProdutoAoCarrinho(produtoIndex = 0) {
-        
+
         this.navegarParaProdutos();
         cy.get('.productinfo').eq(produtoIndex).find('a[data-product-id]').click();
         cy.get('button[data-dismiss="modal"]').click();
@@ -21,11 +21,12 @@ class Carrinho {
     }
 
     removerProdutoDoCarrinho() {
-        cy.get('.cart_delete').first().click();
+        cy.get('.cart_quantity_delete').first().click();
     }
 
     verificarCarrinhoVazio() {
-        cy.contains('Cart is empty!').should('be.visible');
+        // Check that there are no cart items
+        cy.get('.cart_description').should('not.exist');
     }
 
     procederParaCheckout() {
