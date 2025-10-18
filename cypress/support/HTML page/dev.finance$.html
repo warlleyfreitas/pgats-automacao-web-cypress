@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://devfinance-agilizei.netlify.app/# -->
+<html lang="pt-br" class=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>dev.finance$</title>
+
+        <link rel="stylesheet" href="./dev.finance$_files/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+        <link href="./dev.finance$_files/css2" rel="stylesheet">
+    <style>.vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}</style><style>.vue-notification-group{display:block;position:fixed;z-index:5000}.vue-notification-wrapper{display:block;overflow:hidden;width:100%;margin:0;padding:0}.notification-title{font-weight:600}.vue-notification-template{display:block;box-sizing:border-box;background:#fff;text-align:left}.vue-notification{display:block;box-sizing:border-box;text-align:left;font-size:12px;padding:10px;margin:0 5px 5px;color:#fff;background:#44a4fc;border-left:5px solid #187FE7}.vue-notification.warn{background:#ffb648;border-left-color:#f48a06}.vue-notification.error{background:#e54d42;border-left-color:#b82e24}.vue-notification.success{background:#68cd86;border-left-color:#42a85f}.vn-fade-enter-active,.vn-fade-leave-active,.vn-fade-move{transition:all .5s}.vn-fade-enter-from,.vn-fade-leave-to{opacity:0}</style><link type="text/css" rel="stylesheet" href="./dev.finance$_files/css2(1)"><link type="text/css" rel="stylesheet" href="./dev.finance$_files/css2(1)"></head>
+    <body class="">
+        <header class="">
+            <img src="./dev.finance$_files/logo.svg" alt="Logo Dev Finance">
+        </header>
+
+        <main class="container">
+            <section id="balance" class="">
+                <h2 class="sr-only">Balanço</h2>
+
+                <div class="card">
+                    <h3 class="">
+                        <span class="">
+                            Entradas
+                        </span>
+                        <img src="./dev.finance$_files/income.svg" alt="Image de entradas" class="">
+                    </h3>
+                    <p id="incomeDisplay" class="">R$&nbsp;20,00</p>
+                </div>
+
+                <div class="card">
+                    <h3>
+                        <span>
+                            Saídas
+                        </span>
+                        <img src="./dev.finance$_files/expense.svg" alt="Image de saídas">
+                    </h3>
+                    <p id="expenseDisplay" class="">R$&nbsp;0,00</p>
+                </div>
+
+                <div class="card total">
+                    <h3 class="">
+                        <span>
+                            Total
+                        </span>
+                        <img src="./dev.finance$_files/total.svg" alt="Image de total">
+                    </h3>
+                    <p id="totalDisplay">R$&nbsp;20,00</p>
+                </div>
+                
+            </section>
+
+            <section id="transaction" class="">
+                <h2 class="sr-only">Transações</h2>
+
+                <a href="https://devfinance-agilizei.netlify.app/#" onclick="Modal.open()" class="button new">+ Nova Transação</a>
+                
+                <table id="data-table" class="">
+                    <thead>
+                        <tr>
+                            <th class="">Descrição</th>
+                            <th class="">Valor</th>
+                            <th class="">Data</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-index="0">
+        <td class="description">Test</td>
+        <td class="income">R$&nbsp;10,00</td>
+        <td class="date">18/10/2025</td>
+        <td>
+            <img onclick="Transaction.remove(0)" src="./dev.finance$_files/minus.svg" alt="Remover transação">
+        </td>
+        </tr><tr data-index="1">
+        <td class="description">test</td>
+        <td class="income">R$&nbsp;10,00</td>
+        <td class="date">05/02/2025</td>
+        <td>
+            <img onclick="Transaction.remove(1)" src="./dev.finance$_files/minus.svg" alt="Remover transação">
+        </td>
+        </tr></tbody>
+                </table>
+            </section>
+        </main>
+
+        <div class="modal-overlay active">
+            <div class="modal">
+                <div id="form">
+                    <h2>Nova Transação</h2>
+                    <form action="https://devfinance-agilizei.netlify.app/" onsubmit="Form.submit(event)">
+                        <div class="input-group">
+                            <label class="sr-only" for="description">Descrição</label>
+                            <input type="text" id="description" name="description" placeholder="Descrição">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="sr-only" for="amount">Valor</label>
+                            <input type="number" step="0.01" id="amount" name="amount" placeholder="0,00">
+                            <small class="help">Use o sinal - (negativo) para despesas e , (vírgula) para casas decimais</small>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="sr-only" for="date">Data</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <div class="input-group actions">
+                            <a onclick="Modal.close()" href="https://devfinance-agilizei.netlify.app/#" class="button cancel">Cancelar</a>
+                            <button>Salvar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class=""><p class="">dev.finance$</p></footer>
+
+        <script src="./dev.finance$_files/scripts.js"></script>
+    
+
+<div id="toast" class="toast">Element picked!</div><div id="f9a7uhrpgp" style="display: block;"><template shadowrootmode="closed"><div id="0182wn307y"><style type="text/css">
+  @import 'chrome-extension://gidejehfgombmkfflghejpncblgfkagj/app.css';
+</style>
+<div id="cuponomia" data-v-app=""><div></div></div>
+</div></template></div></body></html>
