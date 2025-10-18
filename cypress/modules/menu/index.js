@@ -4,7 +4,7 @@ class Menu {
     }
 
     efetuarLogout() {
-        cy.contains('a', 'Logout').click();
+        cy.get('a[href="/logout"]').should('be.visible').click();
     }
 }
 
