@@ -1,2 +1,5 @@
 node_modules/
 cypress/support/
+package-lock.json
+
+.github
