@@ -15,7 +15,7 @@ describe('Drag and Drop and Windows', () => {
         cy.get('h3').should('have.text', 'Opening a new window');
     });
 
-    it.only('Drag and Drop', () => {
+    it('Drag and Drop', () => {
         cy.visit('https://the-internet.herokuapp.com/drag_and_drop');
 
         const dataTransfer = new DataTransfer();
