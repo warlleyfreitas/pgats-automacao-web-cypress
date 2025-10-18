@@ -1,4 +1,4 @@
-name: Cypress E2E Tests
+name: Web E2E Tests - Cypress 
 
 on:
     push:
@@ -28,33 +28,10 @@ jobs:
                   cache: "npm"
 
             - name: Install dependencies
-              run: npm ci
+              run: npm install
 
-            - name: Verify Cypress installation
-              run: npx cypress verify
-
-            - name: Run Cypress tests
-              uses: cypress-io/github-action@v6
-              with:
-                  browser: chrome
-                  headed: false
-                  spec: cypress/e2e/**/*.cy.js
-
-            - name: Upload screenshots on failure
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: cypress-screenshots
-                  path: cypress/screenshots
-                  if-no-files-found: ignore
-
-            - name: Upload videos
-              if: always()
-              uses: actions/upload-artifact@v4
-              with:
-                  name: cypress-videos
-                  path: cypress/videos
-                  if-no-files-found: ignore
+            - name: Running tests
+              run: npx cypress run
 
             - name: Upload test reports
               if: always()
