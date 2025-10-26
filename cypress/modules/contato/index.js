@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 
 class Contato {
-    navegarParaContato() {
+    navegarParaContactUs() {
         cy.get('a[href*=contact]').click();
     }
 
@@ -21,8 +21,8 @@ class Contato {
         this.preencherFormularioDeContato(nome, email, assunto, mensagem);
     }
 
-    anexarArquivo(caminhoArquivo = 'cypress/fixtures/example.json') {
-        cy.fixture('example.json').as('file');
+    anexarArquivo(caminhoArquivo = 'cypress/fixtures/image.png') {
+        cy.fixture('image.png').as('file');
         cy.get('input[type=file]').selectFile('@file');
     }
 
@@ -33,6 +33,20 @@ class Contato {
     verificarSucessoEnvio() {
         cy.get('.status').should('be.visible');
         cy.get('.status').should('have.text', 'Success! Your details have been submitted successfully.');
+    }
+
+    verificarGetInTouch() {
+        cy.contains('h2', 'Get In Touch').should('be.visible');
+    }
+
+    aceitarAlert() {
+        cy.on('window:alert', (text) => {
+            expect(text).to.contains('pressed a button');
+        });
+    }
+
+    voltarParaHome() {
+        cy.get('a[href="/"]').contains('Home').click();
     }
 
     preencherEEnviarFormularioCompleto() {
