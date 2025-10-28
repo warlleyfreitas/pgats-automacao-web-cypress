@@ -1,6 +1,9 @@
 import { faker } from '@faker-js/faker';
 
 class Cadastro {
+    constructor() {
+        this.credenciaisUsuario = null;
+    }
     preencherFormularioDeCadastroCompleto() {
         const testPassword = 'test-pgats';
 
@@ -107,6 +110,55 @@ class Cadastro {
 
     clicarBotaoSignup() {
         cy.get('button[data-qa="signup-button"]').click();
+    }
+
+    clicarBotaoContinue() {
+        cy.get('a[data-qa="continue-button"]').click();
+    }
+
+    // Função auxiliar para registrar usuário e armazenar credenciais
+    registrarUsuarioCompleto() {
+        const timestamp = Date.now();
+        const userName = 'test-pgats';
+        const userEmail = `test-pgats${timestamp}@qa.com`;
+        const userPassword = 'test-pgats';
+
+        // Armazenar credenciais para uso posterior
+        this.credenciaisUsuario = {
+            name: userName,
+            email: userEmail,
+            password: userPassword
+        };
+
+        // Passo 5: Verificar que 'New User Signup!' está visível
+        this.verificarNovoUsuarioSignup();
+
+        // Passo 6: Inserir nome e endereço de email
+        cy.get('input[data-qa="signup-name"]').type(userName);
+        cy.get('input[data-qa="signup-email"]').type(userEmail);
+
+        // Passo 7: Clicar no botão 'Signup'
+        this.clicarBotaoSignup();
+
+        // Passo 8: Verificar que 'ENTER ACCOUNT INFORMATION' está visível
+        this.verificarEnterAccountInformation();
+
+        // Passos 9-13: Preencher todos os detalhes e criar conta
+        this.preencherFormularioDeCadastroCompletoComTodosOsCampos();
+
+        // Passo 14: Verificar que 'ACCOUNT CREATED!' está visível
+        this.verificarAccountCreated();
+
+        // Passo 15: Clicar no botão 'Continue'
+        this.clicarBotaoContinue();
+
+        // Retornar credenciais
+        return this.credenciaisUsuario;
+    }
+
+    // Obter credenciais armazenadas
+    obterCredenciais() {
+        return this.credenciaisUsuario;
     }
 }
 

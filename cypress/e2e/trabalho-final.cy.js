@@ -16,38 +16,20 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
         cy.visit('https://automationexercise.com');
     });
 
-    describe.skip('Register and Login/Logout Test Cases', () => {
-        it.skip('Test Case 1: Register User', () => {
+    describe('Register and Login/Logout Test Cases', () => {
+        it('Test Case 1: Register User', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
             login.verificarPaginaInicial();
 
             // Passo 4: Clicar no botão 'Signup / Login'
-            menu.navegarParaLogin();
+            menu.navegarParaLoginSignUp();
 
-            // Passo 5: Verificar que 'New User Signup!' está visível
-            cadastro.verificarNovoUsuarioSignup();
-
-            // Passo 6: Inserir nome e endereço de email
-            cadastro.preencherFormularioDePreCadastro();
-
-            // Passo 7: Clicar no botão 'Signup'
-            cadastro.clicarBotaoSignup();
-
-            // Passo 8: Verificar que 'ENTER ACCOUNT INFORMATION' está visível
-            cadastro.verificarEnterAccountInformation();
-
-            // Passos 9-13: Preencher todos os detalhes e criar conta
-            cadastro.preencherFormularioDeCadastroCompletoComTodosOsCampos();
-
-            // Passo 14: Verificar que 'ACCOUNT CREATED!' está visível
-            cadastro.verificarAccountCreated();
-
-            // Passo 15: Clicar no botão 'Continue'
-            cy.get('a[data-qa="continue-button"]').click();
+            // Passos 5-15: Registrar usuário completo e armazenar credenciais
+            const credenciais = cadastro.registrarUsuarioCompleto();
 
             // Passo 16: Verificar que 'Logged in as username' está visível
-            login.verificarLoginComSucesso();
+            login.verificarLoginComSucesso(credenciais.name);
 
             // Passo 17: Clicar no botão 'Delete Account'
             menu.deletarConta();
@@ -56,32 +38,38 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
             menu.verificarContaDeletada();
         });
 
-        it.skip('Test Case 2: Login User with correct email and password', () => {
-            // Carregar credenciais do fixture
-            cy.fixture('validAccount').then((account) => {
-                // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
-                // Passo 3: Verificar que a página inicial está visível com sucesso
-                login.verificarPaginaInicial();
+        it('Test Case 2: Login User with correct email and password', () => {
+            // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
+            // Passo 3: Verificar que a página inicial está visível com sucesso
+            login.verificarPaginaInicial();
 
-                // Passo 4: Clicar no botão 'Signup / Login'
-                menu.navegarParaLogin();
+            // Passo 4: Primeiro, registrar um novo usuário para ter credenciais válidas
+            menu.navegarParaLoginSignUp();
+            const credenciais = cadastro.registrarUsuarioCompleto();
 
-                // Passo 5: Verificar que 'Login to your account' está visível
-                login.verificarPaginaDeLogin();
+            // Fazer logout após registro para testar o login
+            menu.efetuarLogout();
 
-                // Passo 6: Inserir email e senha corretos
-                // Passo 7: Clicar no botão 'login'
-                login.preencherFormularioDeLogin();
+            // Passo 5: Clicar no botão 'Signup / Login' novamente
+            menu.navegarParaLoginSignUp();
 
-                // Passo 8: Verificar que 'Logged in as username' está visível
-                login.verificarLoginComSucesso();
+            // Passo 6: Verificar que 'Login to your account' está visível
+            login.verificarPaginaDeLogin();
 
-                // Passo 9: Clicar no botão 'Delete Account'
-                menu.deletarConta();
+            // Passo 7: Inserir email e senha corretos
+            login.preencherFormularioDeLogin(credenciais.email, credenciais.password);
 
-                // Passo 10: Verificar que 'ACCOUNT DELETED!' está visível
-                menu.verificarContaDeletada();
-            });
+            // Passo 8: Clicar no botão 'login'
+            login.clicarBotaoLogin();
+
+            // Passo 9: Verificar que 'Logged in as username' está visível
+            login.verificarLoginComSucesso(credenciais.name);
+
+            // Passo 10: Clicar no botão 'Delete Account'
+            menu.deletarConta();
+
+            // Passo 11: Verificar que 'ACCOUNT DELETED!' está visível
+            menu.verificarContaDeletada();
         });
 
         it('Test Case 3: Login User with incorrect email and password', () => {
@@ -161,7 +149,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
         });
     });
 
-    describe.skip('Contact Us Test Cases', () => {
+    describe('Contact Us Test Cases', () => {
         it('Test Case 6: Contact Us Form', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
@@ -196,7 +184,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
 
     });
 
-    describe.skip('Products Test Cases', () => {
+    describe('Products Test Cases', () => {
         it('Test Case 8: Verify All Products and product detail page', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
@@ -245,7 +233,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
 
     });
 
-    describe.skip('Subscription Test Cases', () => {
+    describe('Subscription Test Cases', () => {
         it('Test Case 10: Verify Subscription in home page', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
@@ -265,7 +253,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
         });
     });
 
-    describe.skip('Checkout Tests Cases', () => {
+    describe('Checkout Tests Cases', () => {
         it('Test Case 15: Place Order - Register before checkout', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
@@ -283,7 +271,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
 
             // Passo 6: Verificar 'ACCOUNT CREATED!' e clicar no botão 'Continue'
             cadastro.verificarAccountCreated();
-            cy.get('a[data-qa="continue-button"]').click();
+            cadastro.clicarBotaoContinue();
 
             // Passo 7: Verificar que 'Logged in as username' está no topo
             login.verificarLoginComSucesso('test-pgats');
