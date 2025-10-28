@@ -9,6 +9,7 @@ import contato from '../modules/contato';
 import carrinho from '../modules/carrinho';
 import produtos from '../modules/produtos';
 import home from '../modules/home';
+import checkout from '../modules/checkout';
 
 describe('Automation Exercise E2E Tests - Trabalho Final', () => {
     beforeEach(() => {
@@ -244,7 +245,7 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
 
     });
 
-    describe.only('Subscription Test Cases', () => {
+    describe.skip('Subscription Test Cases', () => {
         it('Test Case 10: Verify Subscription in home page', () => {
             // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
             // Passo 3: Verificar que a página inicial está visível com sucesso
@@ -264,9 +265,64 @@ describe('Automation Exercise E2E Tests - Trabalho Final', () => {
         });
     });
 
-    describe.only('Checkout Tests Cases', () => {
+    describe.skip('Checkout Tests Cases', () => {
         it('Test Case 15: Place Order - Register before checkout', () => {
-           
+            // Passos 1-2: Abrir navegador e Navegar para a URL - coberto pelo beforeEach
+            // Passo 3: Verificar que a página inicial está visível com sucesso
+            login.verificarPaginaInicial();
+
+            // Passo 4: Clicar no botão 'Signup / Login'
+            menu.navegarParaLoginSignUp();
+
+            // Passo 5: Preencher todos os detalhes no Signup e criar conta
+            cadastro.verificarNovoUsuarioSignup();
+            cadastro.preencherFormularioDePreCadastro();
+            cadastro.clicarBotaoSignup();
+            cadastro.verificarEnterAccountInformation();
+            cadastro.preencherFormularioDeCadastroCompletoComTodosOsCampos();
+
+            // Passo 6: Verificar 'ACCOUNT CREATED!' e clicar no botão 'Continue'
+            cadastro.verificarAccountCreated();
+            cy.get('a[data-qa="continue-button"]').click();
+
+            // Passo 7: Verificar que 'Logged in as username' está no topo
+            login.verificarLoginComSucesso('test-pgats');
+
+            // Passo 8: Adicionar produtos ao carrinho
+            carrinho.adicionarProdutoAoCarrinho(0);
+            carrinho.adicionarProdutoAoCarrinho(1);
+
+            // Passo 9: Clicar no botão 'Cart'
+            carrinho.navegarParaCarrinho();
+
+            // Passo 10: Verificar que a página do carrinho está sendo exibida
+            checkout.verificarPaginaCarrinho();
+
+            // Passo 11: Clicar em Proceed To Checkout
+            carrinho.procederParaCheckout();
+
+            // Passo 12: Verificar Address Details e Review Your Order
+            checkout.verificarDetalhesEndereco();
+            checkout.verificarRevisaoPedido();
+
+            // Passo 13: Inserir descrição na área de comentário e clicar em 'Place Order'
+            checkout.inserirComentarioPedido('Este é um pedido de teste automatizado para o Test Case 15');
+            checkout.clicarPlaceOrder();
+
+            // Passo 14: Inserir detalhes de pagamento: Name on Card, Card Number, CVC, Expiration date
+            checkout.preencherDadosPagamentoComDadosFaker();
+
+            // Passo 15: Clicar no botão 'Pay and Confirm Order'
+            checkout.clicarPayAndConfirmOrder();
+
+            // Passo 16: Verificar mensagem de sucesso 'Your order has been placed successfully!'
+            checkout.verificarMensagemSucessoPedido();
+
+            // Passo 17: Clicar no botão 'Delete Account'
+            menu.deletarConta();
+
+            // Passo 18: Verificar 'ACCOUNT DELETED!' e clicar no botão 'Continue'
+            menu.verificarContaDeletada();
         });
 
     });
